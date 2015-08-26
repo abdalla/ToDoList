@@ -1,0 +1,31 @@
+{
+  "name": "ToDoList",
+  "version": "0.0.0",
+  "homepage": "https://github.com/abdalla/ToDoList",
+  "description": "This is a todo list project, developed using Bower and Polymer.",
+  "main": "todo-list.html",
+  "keywords": [
+    "webcomponents",
+    "polymer",
+    "todolist",
+    "todo",
+    "list",
+    "to",
+    "do",
+    "list"
+  ],
+  "authors": [
+    "Carlos Abdalla"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "~1.1.1"
+  }
+}
