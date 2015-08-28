@@ -2,9 +2,32 @@
 <html lang="en">
   <head>
     <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="/poly/todo-list.html">
+    <link rel="import" href="../elements.html" />
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        //var model = document.querySelector('todo-list');
+
+      //  model.greeting = 'Hello Carlos below is your todo fucking list';
+      //  model.setItems( [{done: false, description: 'Walk with the dog'},
+      ///                    {done: true, description: 'Buy the ticket'}]);
+
+      //  console.log('ssss');
+
+         var _items =  {done: false, description: 'Walk with the dog'};
+                        //{done: true, description: 'Buy the ticket'}];
+
+        var _model = document.querySelector('todo-list');
+        _model.setAttribute('items', _items);
+
+      });
+    </script>
+
+    </script>
   </head>
   <body>
-    
+      <!--<div><button on-click="{{this.add()}}">Add Item</button></div> -->
+      <todo-list greeting="Carlos"></todo-list>
   </body>
 </html>

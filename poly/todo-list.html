@@ -1,42 +1,53 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<dom-module id="element-name">
-
-  <template>
-    <style>
-      /* CSS rules for your element */
-    </style>
-  
-    <!-- local DOM for your element -->
-
-    <div>{{greeting}}</div> <!-- data bindings in local DOM -->
-    <todo-list></todo-list>
-    XPTO
-  </template>
-
-  <script>
-    // element registration
-    Polymer({
-      is: "todo-list",
-
-      ready: function() {
-        this.textContent = "I'm a todo-list. Check out my prototype!"
-      },
-      
-      greeting: function() {
-        this.textContent = "Hello Carlos" 
-      }
-    });
-    
-    
-    //var toDoList = new ToDoList();
-  </script>
-
-</dom-module>
-
+<!DOCTYPE html>
 <html>
-  <head><div>{{greeting}}</div></head>
-    <body>
-      XPTO
-      <todo-list></todo-list>
+  <head>
+    <link rel="import" href="../bower_components/polymer/polymer.html">
+    <title> My ToDo List</title>
+  </head>
+  <body>
+    <dom-module id="todo-list">
+      <template>
+        <style>
+          /* CSS rules for your element */
+        </style>
+        <header>Local HEADER.</header>
+        <template is="dom-repeat" id="todo_list" items="{{listOfItems}}">
+          <div>
+            <input type="checkbox" checked="{{item.done}}">
+            <span>{{item.description}}</span>
+          </div>
+        </template>
+        <div><button on-click="add">Add Item</button></div>
+      </template>
+
+      <script>
+        // element registration
+        Polymer({
+          is: "todo-list",
+          //this.listOfItems = new[];
+          ready: function() {
+          //  item: {
+          //    done: {type: boolean};
+          //    description: {type: String};
+          //  };
+            this.listOfItems = [{done: false, description: 'Walk with the dog'},
+                                {done: true, description: 'Buy the ticket'},
+            ];
+          },
+
+          add: function(itemDescription){
+              this.listOfItems.push({done: false, description:"one more item"});
+              console.log(this.listOfItems.length);
+
+          },
+
+          greeting: function() {
+            this.textContent = "Hello Carlos below is your todo fucking list"
+          }
+        });
+
+        //var toDoList = new ToDoList();
+      </script>
+    </dom-module>
   </body>
- </html>
+</html>
