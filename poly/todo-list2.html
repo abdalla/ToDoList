@@ -6,6 +6,7 @@
           <header><span>{{_formatGreeting(greeting)}}<span></header>
             <template is="dom-repeat" items="{{items}}">
               <li>
+                <paper-checkbox on-change="checkStateChanged" checked="{{item.done}}"></paper-checkbox>
                 <span>{{item.description}}</span>
               </li>
             </template>
@@ -28,7 +29,18 @@
           },
           _formatGreeting: function(name){
             return 'Hello ' +name+ ' below is your todo list';
-          }
+          },
+          checkStateChanged: function(e, detail, sender){
+            console.log(e);
+            console.log(detail);
+            console.log(detail.description);
+            console.log(sender);
+            console.log(this.items);
+
+          },
+            newItem: function(id, done, description){
+            this.push('items', {id: id, done: done, description: description});
+          },
         });
       </script>
     </dom-module>

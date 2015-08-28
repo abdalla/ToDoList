@@ -6,17 +6,24 @@
 
     <script>
     document.addEventListener("DOMContentLoaded", function () {
-         var _items =  [{done: false, description: 'Walk with the dog'},
-                        {done: true, description: 'Buy the ticket'}];
+         var _items =  [{id: 1, done: false, description: 'Walk with the dog'},
+                        {id: 2, done: true, description: 'Buy the ticket'},
+                        {id: 3, done: false, description: 'Buy bike'}];
 
         var _model = document.querySelector('todo-list');
         _model.items = _items;
       });
     </script>
 
+    <script>
+      function onClick(){
+        var _model = document.querySelector('todo-list');
+        _model.newItem(10, false, 'One more item...');
+      }
     </script>
   </head>
   <body>
+      <button id="btnAddNewItem" onclick="onClick()">Add new Item</button>
       <todo-list greeting="Carlos"></todo-list>
   </body>
 </html>
