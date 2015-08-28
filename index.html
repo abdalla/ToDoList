@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../elements.html" />
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+         var _items =  [{done: false, description: 'Walk with the dog'},
+                        {done: true, description: 'Buy the ticket'}];
+
+        var _model = document.querySelector('todo-list');
+        _model.items = _items;
+      });
+    </script>
+
+    </script>
+  </head>
+  <body>
+      <todo-list greeting="Carlos"></todo-list>
+  </body>
+</html>

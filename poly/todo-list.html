@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="import" href="../bower_components/polymer/polymer.html">
+    <title> My ToDo List</title>
+  </head>
+  <body>
+    <dom-module id="todo-list">
+      <template>
+        <style>
+          /* CSS rules for your element */
+        </style>
+        <header>Local HEADER.</header>
+        <template is="dom-repeat" id="todo_list" items="{{listOfItems}}">
+          <div>
+            <input type="checkbox" checked="{{item.done}}">
+            <span>{{item.description}}</span>
+          </div>
+        </template>
+        <div><button on-click="add">Add Item</button></div>
+      </template>
+
+      <script>
+        // element registration
+        Polymer({
+          is: "todo-list",
+          //this.listOfItems = new[];
+          ready: function() {
+          //  item: {
+          //    done: {type: boolean};
+          //    description: {type: String};
+          //  };
+            this.listOfItems = [{done: false, description: 'Walk with the dog'},
+                                {done: true, description: 'Buy the ticket'},
+            ];
+          },
+
+          add: function(itemDescription){
+              this.listOfItems.push({done: false, description:"one more item"});
+              console.log(this.listOfItems.length);
+
+          },
+
+          greeting: function() {
+            this.textContent = "Hello Carlos below is your todo fucking list"
+          }
+        });
+
+        //var toDoList = new ToDoList();
+      </script>
+    </dom-module>
+  </body>
+</html>

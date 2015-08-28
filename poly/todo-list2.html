@@ -1,0 +1,34 @@
+<dom-module id="todo-list">
+        <style>
+          /* CSS rules for your element */
+        </style>
+        <template>
+          <header><span>{{_formatGreeting(greeting)}}<span></header>
+            <template is="dom-repeat" items="{{items}}">
+              <li>
+                <span>{{item.description}}</span>
+              </li>
+            </template>
+        </template>
+      <script>
+       Polymer({
+          is: 'todo-list',
+          properties: {
+            items: {
+              type: Array,
+              value: function(){
+                return [];
+              }
+            },
+            greeting: {
+              type: String,
+              value: ''
+
+            }
+          },
+          _formatGreeting: function(name){
+            return 'Hello ' +name+ ' below is your todo list';
+          }
+        });
+      </script>
+    </dom-module>
