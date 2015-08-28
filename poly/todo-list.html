@@ -1,0 +1,42 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<dom-module id="element-name">
+
+  <template>
+    <style>
+      /* CSS rules for your element */
+    </style>
+  
+    <!-- local DOM for your element -->
+
+    <div>{{greeting}}</div> <!-- data bindings in local DOM -->
+    <todo-list></todo-list>
+    XPTO
+  </template>
+
+  <script>
+    // element registration
+    Polymer({
+      is: "todo-list",
+
+      ready: function() {
+        this.textContent = "I'm a todo-list. Check out my prototype!"
+      },
+      
+      greeting: function() {
+        this.textContent = "Hello Carlos" 
+      }
+    });
+    
+    
+    //var toDoList = new ToDoList();
+  </script>
+
+</dom-module>
+
+<html>
+  <head><div>{{greeting}}</div></head>
+    <body>
+      XPTO
+      <todo-list></todo-list>
+  </body>
+ </html>
