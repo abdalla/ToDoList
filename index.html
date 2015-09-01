@@ -2,28 +2,67 @@
 <html lang="en">
   <head>
     <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="import" href="../elements.html" />
 
     <script>
     document.addEventListener("DOMContentLoaded", function () {
-         var _items =  [{id: 1, done: false, description: 'Walk with the dog'},
-                        {id: 2, done: true, description: 'Buy the ticket'},
-                        {id: 3, done: false, description: 'Buy bike'}];
-
         var _model = document.querySelector('todo-list');
-        _model.items = _items;
+        _model.items = getList();
       });
-    </script>
- 
-    <script>
-      function onClick(){
-        var _model = document.querySelector('todo-list');
-        _model.newItem(10, false, 'One more item...');
+
+    function  getList(){
+      var _items =  [{id: 1, done: false, description: 'Walk with the dog'},
+                     {id: 2, done: true, description: 'Buy the ticket'},
+                     {id: 3, done: false, description: 'Buy bike'}];
+
+      return _items;
+    }
+
+    function addNewItem(){
+        $('#newItemModal').modal();
       }
+
+      function saveNewItem(argument) {
+        var _model = document.querySelector('todo-list');
+        _model.newItem(10, false, $('#txtItemDescription').val());
+
+        $('#newItemModal').modal('hide');
+      }
+
+      $(function() {
+        $('#newItemModal').on('hide.bs.modal', function (e) {
+            $('#txtItemDescription').val('');
+        })
+      });
     </script>
   </head>
   <body>
-      <button id="btnAddNewItem" onclick="onClick()">Add new Item</button>
+      <button id="btnAddNewItem" onclick="addNewItem()">Add new Item</button>
+
       <todo-list greeting="Carlos"></todo-list>
+
+      <button id="btnSaveList" onclick="saveList()">Save List</button>
+
   </body>
+
+  <div class="modal fade" id="newItemModal" tabindex="-1" role="dialog" aria-labelledby="newItemModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="newItemModalLabel">Add new item</h4>
+        </div>
+        <div class="modal-body">
+          <h5 class="modal-title">Description: </h5> <input type="text" id="txtItemDescription" />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" onclick="saveNewItem()">Save Item</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </html>

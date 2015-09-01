@@ -4,12 +4,14 @@
         </style>
         <template>
           <header><span>{{_formatGreeting(greeting)}}<span></header>
+          <ul>
             <template is="dom-repeat" items="{{items}}">
-              <li>
+              <li hidden="{{item.done}}">
                 <paper-checkbox on-change="checkStateChanged" checked="{{item.done}}"></paper-checkbox>
                 <span>{{item.description}}</span>
               </li>
             </template>
+          </ul>
         </template>
       <script>
        Polymer({
@@ -33,14 +35,18 @@
           checkStateChanged: function(e, detail, sender){
             console.log(e);
             console.log(detail);
-            console.log(detail.description);
+            console.log(detail);
             console.log(sender);
-            console.log(this.items);
+            //console.log(this.items);
 
           },
-            newItem: function(id, done, description){
+          newItem: function(id, done, description){
             this.push('items', {id: id, done: done, description: description});
           },
+          getItems: function()
+          {
+            return this.items;
+          }
         });
       </script>
     </dom-module>

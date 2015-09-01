@@ -26,6 +26,8 @@
     "tests"
   ],
   "dependencies": {
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4",
     "paper-checkbox": "PolymerElements/paper-checkbox#~1.0.8",
     "polymer": "Polymer/polymer#^1.0.0"
   }
